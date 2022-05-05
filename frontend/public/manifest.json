@@ -1,0 +1,15 @@
+{
+  "short_name": "Todo App SR",
+  "name": "Sofka To-Do Challenge in SpringBoot and React",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1192ee",
+  "background_color": "#fbfdfe"
+}
