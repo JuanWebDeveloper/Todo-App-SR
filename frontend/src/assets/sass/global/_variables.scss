@@ -1,0 +1,34 @@
+// Background Colors
+$background_primary: #fbfdfe;
+$background_secondary: #ececec;
+$background_third: darken(#ececec, 5%);
+
+// Box Shadow
+$box_shadow_primary: 5px 10px 10px rgba(0, 0, 0, 0.5);
+$box_shadow_secondary: 3px 3px 4px 1px rgba(0, 0, 0, 0.5);
+$box_shadow_third: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
+$box_shadow_fourth: inset 0px -4px 20px 0 $background_secondary, inset 0px 4px 20px 0 rgba(0, 0, 0, 0.4);
+
+// Text Colors
+$color_title: #1192ee;
+$color_text: #273b49;
+
+// Font Sizes
+$font_size_title: 2.25rem;
+$font_size_sub_title: 1.9rem;
+$font_size_text: 1.063rem;
+$font_size_button: 1.25rem;
+
+// Font Weights
+$font_weight_title: 700;
+$font_weight_sub_title: 600;
+$font_weight_text: 400;
+$font_weight_button: 600;
+
+// Line Heights
+$line_height_title: 3.25rem;
+$line_height_sub_title: 2.9rem;
+$line_height_text: 1.6rem;
+
+// Transitions
+$transition: 0.3s all cubic-bezier(0.645, 0.045, 0.355, 1);

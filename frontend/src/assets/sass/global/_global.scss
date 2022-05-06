@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// Global Styles
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  background-color: $background_primary;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: $color_title;
+  margin: 0;
+
+  span {
+    color: $color_text;
+  }
+}
+
+p,
+input {
+  color: $color_text;
+  font-size: $font_size_text;
+  font-weight: $font_weight_text;
+}
+
+p {
+  line-height: $line_height_text;
+  margin: 0;
+  text-align: justify;
+
+  span,
+  a {
+    color: $color_title;
+  }
+}
+
+// General Class Styles
+.title,
+.title-dark {
+  font-size: $font_size_title;
+  font-weight: $font_weight_title;
+  line-height: $line_height_title;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.sub-title,
+.sub-title_dark {
+  font-size: $font_size_sub_title;
+  font-weight: $font_weight_sub_title;
+  line-height: $line_height_sub_title;
+}
+
+.title-dark,
+.sub-title_dark {
+  color: $color_text;
+
+  span {
+    color: $color_title;
+  }
+}
+
+.bg-secondary {
+  background-color: $background_secondary;
+}
+
+.button {
+  background-color: $background_secondary;
+  border: none;
+  border-radius: 5px;
+  box-shadow: $box_shadow_secondary;
+  color: $color_title;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $font_size_button;
+  font-weight: $font_weight_button;
+  margin: 10px 0;
+  position: relative;
+  padding: 8px 35px;
+  transition: $transition;
+
+  &:hover {
+    box-shadow: $box_shadow_third;
+    transform: scale(1.15);
+  }
+
+  &::before {
+    border-radius: 5px;
+    content: '';
+    height: 80%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: $transition;
+    width: 95%;
+  }
+
+  &:hover::before {
+    box-shadow: $box_shadow_fourth;
+  }
+}
+
+.main {
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+
+  .content {
+    height: 80%;
+    position: relative;
+    padding: 1.5rem;
+    width: 100%;
+  }
+}
