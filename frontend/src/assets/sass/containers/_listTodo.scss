@@ -1,0 +1,208 @@
+.list-todo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  // Styles of the search from to-dos
+  .search-todo {
+    align-items: center;
+    height: 16%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+
+    form {
+      position: relative;
+      width: 50%;
+
+      input {
+        background-color: $background_third;
+        box-shadow: $box_shadow_third;
+        border: none;
+        border-radius: 5px;
+        font-size: $font_size_button;
+        font-weight: $font_weight_button;
+        height: 40px;
+        padding: 0 1rem;
+        transition: $transition;
+        width: 100%;
+
+        &:focus {
+          outline: none;
+          transform: scale(1.1);
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  // Styles of the list to-dos
+  .todo-container {
+    max-height: 80%;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: relative;
+    padding: 0 1rem;
+    top: 4%;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    .single-todo {
+      align-items: center;
+      background-color: $background_secondary;
+      box-shadow: $box_shadow_secondary;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      position: relative;
+      transition: $transition;
+      padding: 0.7rem 1rem;
+
+      &:hover {
+        background-color: $background_third;
+        transform: scale(1.02);
+      }
+
+      .description-todo {
+        color: $color_text;
+        font-size: $font_size_text;
+        font-weight: $font_weight_text;
+      }
+
+      .actions {
+        button {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          margin-left: 15px;
+
+          i {
+            font-size: $font_size_button;
+            transition: $transition;
+          }
+
+          &:hover i {
+            transform: scale(1.3);
+          }
+        }
+
+        button.disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        .btn-completed {
+          i.incomplete {
+            color: #fd0808;
+          }
+
+          i.complete {
+            color: #0f0;
+          }
+        }
+
+        .btn-edit {
+          i {
+            color: #0027d4;
+          }
+        }
+
+        .btn-delete {
+          i {
+            color: #d40000;
+          }
+        }
+      }
+    }
+
+    .single-todo.isCompleted {
+      background-color: $background_third;
+      transform: scale(0.98);
+
+      .description-todo {
+        text-decoration: line-through;
+        z-index: 5;
+      }
+
+      .actions {
+        z-index: 5;
+      }
+
+      &::after {
+        background-color: $background_third;
+        box-shadow: $box_shadow_fourth;
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+      }
+    }
+  }
+
+  // Styles of the no found to-dos
+  .no-found,
+  .no-created {
+    background-color: #e00b0b;
+    box-shadow: $box_shadow_primary;
+    border-radius: 5px;
+    color: #fdfdfd;
+    font-size: $font_size_sub_title;
+    font-weight: $font_weight_sub_title;
+    height: 0;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    transition: $transition;
+    padding: 0;
+  }
+
+  .no-created {
+    background-color: $background_third;
+    box-shadow: $box_shadow_secondary;
+    color: $color_text;
+    position: relative;
+
+    &::before {
+      border-radius: 5px;
+      box-shadow: $box_shadow_fourth;
+      content: '';
+      height: 100%;
+      left: 0%;
+      position: absolute;
+      top: 0%;
+      width: 100%;
+    }
+  }
+
+  .isActive {
+    animation: no-found-animation 0.5s forwards;
+  }
+
+  @keyframes no-found-animation {
+    0% {
+      height: 0;
+      letter-spacing: 1px;
+      padding: 0;
+    }
+
+    100% {
+      height: auto;
+      letter-spacing: 2px;
+      padding: 1rem;
+    }
+  }
+}
