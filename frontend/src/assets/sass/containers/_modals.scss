@@ -1,0 +1,179 @@
+// Styles of the modal
+.modal {
+  background-color: rgba($color: #000, $alpha: 0.9);
+  border-radius: 100%;
+  height: 0;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  width: 100vw;
+  z-index: -15;
+
+  .modal-content {
+    box-shadow: $box_shadow_primary;
+    border-radius: 5px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .modal-header {
+      align-items: center;
+      background-color: $background_secondary;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding: 1rem;
+      width: 100%;
+
+      h4 {
+        font-size: $font_size_sub_title;
+        font-weight: $font_weight_sub_title;
+        letter-spacing: 2px;
+      }
+
+      .close {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: $transition;
+
+        i {
+          color: $color_text;
+          font-size: $font_size_sub_title;
+          font-weight: $font_weight_sub_title;
+          transition: $transition;
+        }
+
+        &:hover {
+          transform: scale(1.5);
+        }
+
+        &:hover i {
+          font-weight: $font_weight_title;
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .modal-body {
+      background-color: $background_third;
+      box-shadow: $box_shadow_fourth;
+      height: 150px;
+      position: relative;
+      width: 40vw;
+
+      form {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+
+        input {
+          background-color: $background_secondary;
+          box-shadow: $box_shadow_secondary;
+          border: none;
+          border-radius: 5px;
+          margin-bottom: 20px;
+          position: relative;
+          padding: 0.5rem 1rem;
+          transition: $transition;
+          width: 80%;
+
+          &:focus {
+            outline: none;
+            transform: scale(1.1);
+          }
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        button {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.show-modal {
+  animation: show-modal 0.6s forwards;
+}
+
+@keyframes show-modal {
+  0% {
+    border-radius: 100%;
+    height: 0;
+    opacity: 0;
+  }
+
+  25% {
+    border-radius: 75%;
+    height: 25vh;
+    opacity: 0.25;
+  }
+
+  50% {
+    border-radius: 50%;
+    height: 50vh;
+    opacity: 0.5;
+  }
+
+  75% {
+    border-radius: 25%;
+    opacity: 0.75;
+    height: 75vh;
+  }
+
+  100% {
+    border-radius: 0;
+    height: 100vh;
+    opacity: 1;
+    pointer-events: all;
+    z-index: 15;
+  }
+}
+
+.hide-modal {
+  animation: hide-modal 0.6s forwards;
+}
+
+@keyframes hide-modal {
+  0% {
+    border-radius: 0;
+    height: 100vh;
+    opacity: 1;
+  }
+
+  25% {
+    border-radius: 25%;
+    opacity: 0.75;
+    height: 75vh;
+  }
+
+  50% {
+    border-radius: 50%;
+    height: 50vh;
+    opacity: 0.5;
+  }
+
+  75% {
+    border-radius: 75%;
+    height: 25vh;
+    opacity: 0.25;
+  }
+
+  100% {
+    border-radius: 100%;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -15;
+  }
+}

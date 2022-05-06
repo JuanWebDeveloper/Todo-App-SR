@@ -1,11 +1,14 @@
 // Containers
 import Layouts from './Layouts';
+import Modals from './Modals';
 
 const Main = () => {
   return (
     <div className='main'>
       <Layouts>
-        <div className='content'>To-do Application</div>
+        <div className='content'>
+          <Modals />
+        </div>
       </Layouts>
     </div>
   );
