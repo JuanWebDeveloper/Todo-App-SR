@@ -34,4 +34,10 @@ public class TodoService {
         return todoRepository.findById(id);
     }
 
+    // Method to update a to-do
+    public Optional<TodoModel> updateTodo(TodoModel todoModel, Long id) {
+        todoModel.setId(id);
+        return Optional.of(todoRepository.save(todoModel));
+    }
+
 }

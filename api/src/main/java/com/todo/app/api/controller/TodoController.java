@@ -40,4 +40,16 @@ public class TodoController {
             return Optional.empty(); // If the id does not exist, an empty optional is returned
         }
     }
+
+    // Method to update a to-do
+    @PutMapping("/todos/{id}")
+    public Optional<TodoModel> updateTodo(@RequestBody TodoModel todoModel, @PathVariable Long id) {
+        boolean exists = todoService.validateExistenceOfId(id);
+
+        if (exists) {
+            return todoService.updateTodo(todoModel, id);
+        } else {
+            return Optional.empty();
+        }
+    }
 }
