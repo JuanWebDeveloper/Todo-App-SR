@@ -1,6 +1,7 @@
 package com.todo.app.api.controller;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.todo.app.api.model.TodoModel;
 import com.todo.app.api.service.TodoService;
@@ -26,5 +27,17 @@ public class TodoController {
     @PostMapping("/todos")
     public TodoModel saveTodo(@RequestBody TodoModel todoModel) {
         return todoService.saveTodo(todoModel);
+    }
+
+    // Method to get a to-do by id
+    @GetMapping("/todos/{id}")
+    public Optional<TodoModel> getTodoById(@PathVariable Long id) {
+        boolean exists = todoService.validateExistenceOfId(id); // Check if id exists
+
+        if (exists) {
+            return Optional.of(todoService.getTodoById(id).get()); // If the id exists, the to-dos is returned
+        } else {
+            return Optional.empty(); // If the id does not exist, an empty optional is returned
+        }
     }
 }

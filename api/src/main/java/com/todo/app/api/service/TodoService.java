@@ -1,6 +1,7 @@
 package com.todo.app.api.service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.todo.app.api.model.TodoModel;
 import com.todo.app.api.repository.TodoRepository;
@@ -21,6 +22,16 @@ public class TodoService {
     // Method to save the to-dos
     public TodoModel saveTodo(TodoModel todoModel) {
         return todoRepository.save(todoModel);
+    }
+
+    // Method to validate if an id exists
+    public boolean validateExistenceOfId(Long id) {
+        return todoRepository.existsById(id);
+    }
+
+    // Method to get a to-do by id
+    public Optional<TodoModel> getTodoById(Long id) {
+        return todoRepository.findById(id);
     }
 
 }
