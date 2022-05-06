@@ -40,4 +40,13 @@ public class TodoService {
         return Optional.of(todoRepository.save(todoModel));
     }
 
+    // Method to delete a to-do
+    public boolean deleteTodo(Long id) {
+        try {
+            todoRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

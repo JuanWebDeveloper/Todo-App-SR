@@ -29,11 +29,11 @@ public class TodoModel {
         this.todoDescription = todoDescription;
     }
 
-    public boolean isCompleted() {
+    public boolean getIsCompleted() {
         return isCompleted;
     }
 
-    public void setCompleted(boolean isCompleted) {
+    public void setIsCompleted(boolean isCompleted) {
         this.isCompleted = isCompleted;
     }
 
