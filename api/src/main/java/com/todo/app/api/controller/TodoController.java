@@ -21,4 +21,10 @@ public class TodoController {
     public ArrayList<TodoModel> getAllTodos() {
         return todoService.getAllTodos();
     }
+
+    // Method to save the to-dos
+    @PostMapping("/todos")
+    public TodoModel saveTodo(@RequestBody TodoModel todoModel) {
+        return todoService.saveTodo(todoModel);
+    }
 }

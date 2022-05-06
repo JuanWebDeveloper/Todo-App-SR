@@ -18,4 +18,9 @@ public class TodoService {
         return (ArrayList<TodoModel>) todoRepository.findAll();
     }
 
+    // Method to save the to-dos
+    public TodoModel saveTodo(TodoModel todoModel) {
+        return todoRepository.save(todoModel);
+    }
+
 }
