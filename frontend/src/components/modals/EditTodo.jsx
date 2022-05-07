@@ -1,4 +1,13 @@
+// Hooks
+import { useForm } from '../../hooks/useForm';
+
 export const EditTodo = () => {
+  const { formValues, handleInputChange } = useForm({
+    editTodo: '',
+  });
+
+  const { editTodo } = formValues;
+
   return (
     <div className='modal' id='modalEdit'>
       <div className='modal-content'>
@@ -10,7 +19,7 @@ export const EditTodo = () => {
         </div>
         <div className='modal-body'>
           <form>
-            <input type='text' name='editTodo' placeholder='Todo Description' required />
+            <input type='text' name='editTodo' placeholder='Todo Description' value={editTodo} onChange={handleInputChange} required />
             <button className='button'>Edit</button>
           </form>
         </div>
