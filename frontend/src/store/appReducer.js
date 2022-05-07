@@ -25,6 +25,13 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         isEditing: action.payload,
       };
+    case types.UPDATE_TODO:
+      return {
+        ...state,
+        todos: state.todos.map((todo) => (todo.id === action.payload.id ? action.payload : todo)),
+        isEditing: {},
+        todoSearch: state.todoSearch.length > 0 ? state.todoSearch.map((todo) => (todo.id === action.payload.id ? action.payload : todo)) : [],
+      };
     default:
       return state;
   }

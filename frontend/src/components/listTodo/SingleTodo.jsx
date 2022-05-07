@@ -6,7 +6,7 @@ import { actionForGetById } from '../../actions/appActions';
 export const SingleTodo = ({ id, todoDescription, isCompleted }) => {
   const dispatch = useDispatch();
 
-  // Get data from the to-do in the database by their id
+  // Dispatch the action to get the to-do by is id
   const handleIsEditing = () => dispatch(actionForGetById(id));
 
   return (

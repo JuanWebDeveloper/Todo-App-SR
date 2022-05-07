@@ -16,9 +16,13 @@ export const CreateTodo = () => {
   const { formValues, setFormValues, handleInputChange } = useForm({ createTodo: '' });
   const { createTodo } = formValues;
 
-  const handleSubmit = (e) => {
+  // Handle submission to create the to-dos
+  const handleSubmitForCreateTodo = (e) => {
     e.preventDefault();
+
+    // Dispatch the action to save the to-do
     dispatch(actionForSaveTodo(createTodo));
+
     setFormValues({ createTodo: '' });
     hideModalCreateTodo();
   };
@@ -33,7 +37,7 @@ export const CreateTodo = () => {
           </button>
         </div>
         <div className='modal-body'>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmitForCreateTodo}>
             <input type='text' name='createTodo' placeholder='Todo Description' value={createTodo} onChange={handleInputChange} required />
             <button className='button'>Create</button>
           </form>

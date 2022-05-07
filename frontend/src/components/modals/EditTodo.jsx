@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Hooks
 import { useForm } from '../../hooks/useForm';
@@ -7,8 +7,12 @@ import { useForm } from '../../hooks/useForm';
 // Helpers
 import { showModalEditTodo, hideModalEditTodo } from '../../helpers/modals';
 
+// Actions
+import { actionForUpdateTodo } from '../../actions/appActions';
+
 export const EditTodo = () => {
   const state = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   // Handle form values
   const { formValues, setFormValues, handleInputChange } = useForm({ editTodo: '' });
@@ -21,6 +25,23 @@ export const EditTodo = () => {
     setFormValues({ editTodo: todoDescription });
   }, [state.isEditing, setFormValues]);
 
+  // Handle submission to edit the to-dos
+  const handleSubmitForEditTodo = (e) => {
+    e.preventDefault();
+
+    // Task that you are going to update
+    const todo = {
+      id: state.isEditing.id,
+      todoDescription: editTodo,
+      isCompleted: state.isEditing.isCompleted,
+    };
+
+    // Dispatch the action to update the to-do
+    dispatch(actionForUpdateTodo(todo));
+
+    hideModalEditTodo();
+  };
+
   return (
     <div className='modal' id='modalEdit'>
       <div className='modal-content'>
@@ -31,7 +52,7 @@ export const EditTodo = () => {
           </button>
         </div>
         <div className='modal-body'>
-          <form>
+          <form onSubmit={handleSubmitForEditTodo}>
             <input type='text' name='editTodo' placeholder='Todo Description' value={editTodo} onChange={handleInputChange} required />
             <button className='button'>Edit</button>
           </form>

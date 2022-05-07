@@ -86,3 +86,38 @@ const getById = (todo) => ({
   type: types.GET_BY_ID,
   payload: todo,
 });
+
+// Actions to update a the to-dos
+export const actionForUpdateTodo = (todo) => {
+  return async (dispatch) => {
+    const { id, todoDescription, isCompleted } = todo;
+
+    const body = JSON.stringify({
+      id,
+      todoDescription,
+      isCompleted,
+    });
+
+    const credentials = {
+      method: 'PUT',
+      headers,
+      body,
+    };
+
+    const response = await fetch(`${apiPath}/${id}`, credentials);
+
+    response
+      .json()
+      .then((data) => {
+        dispatch(updateTodo(data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+const updateTodo = (todo) => ({
+  type: types.UPDATE_TODO,
+  payload: todo,
+});

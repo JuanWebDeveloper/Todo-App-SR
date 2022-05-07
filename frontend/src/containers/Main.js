@@ -13,6 +13,7 @@ const Main = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // Dispatch the action to get all to-dos
     dispatch(actionForGetAllTodos());
   }, [dispatch]);
 
