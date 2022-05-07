@@ -1,6 +1,9 @@
 // Hooks
 import { useForm } from '../../hooks/useForm';
 
+// Helpers
+import { hideModalCreateTodo } from '../../helpers/modals';
+
 export const CreateTodo = () => {
   const { formValues, handleInputChange } = useForm({
     createTodo: '',
@@ -13,7 +16,7 @@ export const CreateTodo = () => {
       <div className='modal-content'>
         <div className='modal-header'>
           <h4>Create To-do</h4>
-          <button type='button' className='close' aria-label='Close'>
+          <button type='button' className='close' aria-label='Close' onClick={hideModalCreateTodo}>
             <i className='fa-solid fa-xmark'></i>
           </button>
         </div>
