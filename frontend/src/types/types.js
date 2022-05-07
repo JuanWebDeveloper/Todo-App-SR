@@ -4,4 +4,5 @@ export const types = {
   GET_BY_ID: 'Action to get a to-do by id',
   UPDATE_TODO: 'Action to update a the to-dos',
   DELETE_TODO: 'Action to delete a to-do',
+  SEARCH_TODOS: 'Action to search to-dos',
 };

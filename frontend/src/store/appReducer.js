@@ -18,7 +18,6 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         todos: [...state.todos, action.payload],
-        isSearching: false,
       };
     case types.GET_BY_ID:
       return {
@@ -37,6 +36,12 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload),
         todoSearch: state.todoSearch.length > 0 ? state.todoSearch.filter((todo) => todo.id !== action.payload) : [],
+      };
+    case types.SEARCH_TODOS:
+      return {
+        ...state,
+        todoSearch: action.payload.todos,
+        isSearching: action.payload.isSearching,
       };
     default:
       return state;

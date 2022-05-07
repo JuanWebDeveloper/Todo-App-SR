@@ -10,11 +10,23 @@ const ListTodo = () => {
   return (
     <div className='list-todo'>
       <SearchTodo />
-      <div className='todo-container'>
-        {state.todos.map((todo) => (
-          <SingleTodo key={todo.id} {...todo} />
-        ))}
-      </div>
+      {!state.isSearching && (
+        <div className='todo-container'>
+          {state.todos.map((todo) => (
+            <SingleTodo key={todo.id} {...todo} />
+          ))}
+        </div>
+      )}
+
+      {state.todoSearch.length >= 1 && (
+        <div className='todo-container'>
+          {state.todoSearch.map((todo) => (
+            <SingleTodo key={todo.id} {...todo} />
+          ))}
+        </div>
+      )}
+
+      {!state.todoSearch.length >= 1 && state.isSearching && state.todos.length > 0 && <div className={`no-found isActive`}>No found to-dos</div>}
     </div>
   );
 };

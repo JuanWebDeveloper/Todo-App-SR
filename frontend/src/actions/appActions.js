@@ -147,3 +147,33 @@ const deleteTodo = (id) => ({
   type: types.DELETE_TODO,
   payload: id,
 });
+
+// Actions to search to-dos
+export const actionForSearchTodos = (search) => {
+  return (dispatch, getState) => {
+    if (search.length > 0) {
+      const state = getState();
+
+      const filteredTodos = state.todos.filter((todo) => todo.todoDescription.toLowerCase().includes(search.toLowerCase()));
+
+      const todos = {
+        todos: filteredTodos,
+        isSearching: true,
+      };
+
+      dispatch(searchTodos(todos));
+    } else {
+      const todos = {
+        todos: [],
+        isSearching: false,
+      };
+
+      dispatch(searchTodos(todos));
+    }
+  };
+};
+
+const searchTodos = (todos) => ({
+  type: types.SEARCH_TODOS,
+  payload: todos,
+});
