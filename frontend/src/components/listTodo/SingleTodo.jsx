@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 // Actions
-import { actionForGetById, actionForDeleteTodo } from '../../actions/appActions';
+import { actionForGetById, actionForDeleteTodo, actionForUpdateTodo } from '../../actions/appActions';
 
 export const SingleTodo = ({ id, todoDescription, isCompleted }) => {
   const dispatch = useDispatch();
@@ -12,11 +12,23 @@ export const SingleTodo = ({ id, todoDescription, isCompleted }) => {
   // Dispatch the action to delete the to-do by is id
   const handleDelete = () => dispatch(actionForDeleteTodo(id));
 
+  // Handle marking of completed and not completed tasks
+  const handleToggleMark = () => {
+    const todo = {
+      id,
+      todoDescription,
+      isCompleted: !isCompleted,
+    };
+
+    // Dispatch the action to update the to-do
+    dispatch(actionForUpdateTodo(todo));
+  };
+
   return (
     <div className={`single-todo ${isCompleted && 'isCompleted'}`}>
       <div className='description-todo'>{todoDescription}</div>
       <div className='actions'>
-        <button className='btn-completed'>
+        <button className='btn-completed' onClick={handleToggleMark}>
           {isCompleted ? <i className='fa-solid fa-xmark incomplete'></i> : <i className='fa-solid fa-check complete'></i>}
         </button>
         <button className={`btn-edit ${isCompleted && 'disabled'}`} onClick={handleIsEditing}>
