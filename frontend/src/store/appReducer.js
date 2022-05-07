@@ -20,6 +20,11 @@ export const appReducer = (state = initialState, action) => {
         todos: [...state.todos, action.payload],
         isSearching: false,
       };
+    case types.GET_BY_ID:
+      return {
+        ...state,
+        isEditing: action.payload,
+      };
     default:
       return state;
   }

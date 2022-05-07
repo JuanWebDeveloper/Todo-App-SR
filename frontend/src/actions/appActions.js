@@ -60,3 +60,29 @@ const saveTodo = (todo) => ({
   type: types.SAVE_TODO,
   payload: todo,
 });
+
+// Actions to get a to-do by id
+export const actionForGetById = (id) => {
+  return async (dispatch) => {
+    const credentials = {
+      method: 'GET',
+      headers,
+    };
+
+    const response = await fetch(`${apiPath}/${id}`, credentials);
+
+    response
+      .json()
+      .then((data) => {
+        dispatch(getById(data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+const getById = (todo) => ({
+  type: types.GET_BY_ID,
+  payload: todo,
+});

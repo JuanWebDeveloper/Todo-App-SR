@@ -1,19 +1,32 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 // Hooks
 import { useForm } from '../../hooks/useForm';
 
-export const EditTodo = () => {
-  const { formValues, handleInputChange } = useForm({
-    editTodo: '',
-  });
+// Helpers
+import { showModalEditTodo, hideModalEditTodo } from '../../helpers/modals';
 
+export const EditTodo = () => {
+  const state = useSelector((state) => state);
+
+  // Handle form values
+  const { formValues, setFormValues, handleInputChange } = useForm({ editTodo: '' });
   const { editTodo } = formValues;
+
+  // Showing the edit modal and load the data you want to edit in the modal
+  useEffect(() => {
+    showModalEditTodo();
+    const { todoDescription } = state.isEditing;
+    setFormValues({ editTodo: todoDescription });
+  }, [state.isEditing, setFormValues]);
 
   return (
     <div className='modal' id='modalEdit'>
       <div className='modal-content'>
         <div className='modal-header'>
           <h4>Edit To-do</h4>
-          <button type='button' className='close' aria-label='Close'>
+          <button type='button' className='close' aria-label='Close' onClick={hideModalEditTodo}>
             <i className='fa-solid fa-xmark'></i>
           </button>
         </div>
