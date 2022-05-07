@@ -14,7 +14,7 @@ const Main = () => {
 
   useEffect(() => {
     dispatch(actionForGetAllTodos());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='main'>

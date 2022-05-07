@@ -14,6 +14,12 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         todos: action.payload,
       };
+    case types.SAVE_TODO:
+      return {
+        ...state,
+        todos: [...state.todos, action.payload],
+        isSearching: false,
+      };
     default:
       return state;
   }
