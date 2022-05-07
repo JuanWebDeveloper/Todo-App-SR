@@ -29,7 +29,7 @@ const getAllTodos = (todos) => ({
   payload: todos,
 });
 
-// Actions to save a to-dos
+// Actions to save a the to-dos
 export const actionForSaveTodo = (todoDescription) => {
   return async (dispatch) => {
     const body = JSON.stringify({
@@ -61,7 +61,7 @@ const saveTodo = (todo) => ({
   payload: todo,
 });
 
-// Actions to get a to-do by id
+// Actions to get a to-do by its id
 export const actionForGetById = (id) => {
   return async (dispatch) => {
     const credentials = {
@@ -120,4 +120,30 @@ export const actionForUpdateTodo = (todo) => {
 const updateTodo = (todo) => ({
   type: types.UPDATE_TODO,
   payload: todo,
+});
+
+// Actions to delete a the to-dos
+export const actionForDeleteTodo = (id) => {
+  return async (dispatch) => {
+    const credentials = {
+      method: 'DELETE',
+      headers,
+    };
+
+    const response = await fetch(`${apiPath}/${id}`, credentials);
+
+    response
+      .json()
+      .then((data) => {
+        data && dispatch(deleteTodo(id));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+const deleteTodo = (id) => ({
+  type: types.DELETE_TODO,
+  payload: id,
 });

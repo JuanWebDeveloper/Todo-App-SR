@@ -32,6 +32,12 @@ export const appReducer = (state = initialState, action) => {
         isEditing: {},
         todoSearch: state.todoSearch.length > 0 ? state.todoSearch.map((todo) => (todo.id === action.payload.id ? action.payload : todo)) : [],
       };
+    case types.DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.payload),
+        todoSearch: state.todoSearch.length > 0 ? state.todoSearch.filter((todo) => todo.id !== action.payload) : [],
+      };
     default:
       return state;
   }
