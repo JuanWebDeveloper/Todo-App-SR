@@ -55,19 +55,13 @@ public class TodoController {
 
     // Method to delete a to-do
     @DeleteMapping("/todos/{id}")
-    public String deleteTodo(@PathVariable Long id) {
+    public boolean deleteTodo(@PathVariable Long id) {
         boolean exists = todoService.validateExistenceOfId(id);
 
         if (exists) {
-            boolean ok = todoService.deleteTodo(id); // If the id exists, the user is deleted
-
-            if (ok) {
-                return "To-do with id " + id + " was deleted";
-            } else {
-                return "Could not delete the to-do with id " + id;
-            }
+            return todoService.deleteTodo(id); // If the id exists, the user is deleted
         } else {
-            return "To-do with id " + id + " does not exist";
+            return false;
         }
     }
 }
